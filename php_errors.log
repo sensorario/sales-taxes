@@ -1,0 +1,2 @@
+[02-Sep-2015 21:51:20 UTC] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) in /home/vagrant/Development/sensorario/extreme/test/unit/Sensorario/RoundingTest.php on line 64
+[02-Sep-2015 21:52:50 UTC] PHP Fatal error:  Call to undefined method Sensorario\Money::getPercentInCent() in /home/vagrant/Development/sensorario/extreme/test/unit/Sensorario/RoundingTest.php on line 16
