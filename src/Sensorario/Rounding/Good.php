@@ -38,9 +38,15 @@ final class Good implements Percentable
         return $this->params['price'];
     }
 
+    public function isTaxed()
+    {
+        return $this->params['type'] == 'perfume';
+    }
+
     public function finalValue()
     {
         $price      = $this->price();
+
         $salesTaxes = $this->valuePercent(5);
 
         return $price + $salesTaxes;
