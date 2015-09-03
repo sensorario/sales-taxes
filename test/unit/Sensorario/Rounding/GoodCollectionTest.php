@@ -82,5 +82,10 @@ final class GoodCollectionTest extends PHPUnit_Framework_TestCase
             1.50,
             $this->collection->salesTaxes()
         );
+
+        $this->assertEquals(
+            29.83,
+            $this->collection->totalAmount()
+        );
     }
 }

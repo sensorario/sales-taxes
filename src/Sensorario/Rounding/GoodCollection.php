@@ -41,4 +41,16 @@ class GoodCollection
 
         return $salesTaxes;
     }
+
+    public function totalAmount()
+    {
+        $rawPriceAmount = 0;
+
+        foreach ($this->goods as $good) {
+            $rawPriceAmount += $good->price();
+        }
+
+        return $rawPriceAmount
+            + $this->salesTaxes();
+    }
 }
