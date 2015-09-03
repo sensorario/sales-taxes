@@ -5,6 +5,26 @@ namespace Sensorario\Rounding;
 use PHPUnit_Framework_TestCase;
 use Sensorario\Rounding\Good;
 
+final class GoodCollectionTest extends PHPUnit_Framework_TestCase
+{
+    public function testIsEmpty()
+    {
+        $collection = new GoodCollection();
+        $this->assertSame(
+            true,
+            $collection->isEmpty()
+        );
+    }
+}
+
+class GoodCollection
+{
+    public function isEmpty()
+    {
+        return true;
+    }
+}
+
 final class GoodTest extends PHPUnit_Framework_TestCase
 {
     public function testImportedNotTaxed()
