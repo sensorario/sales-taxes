@@ -67,4 +67,9 @@ final class Good implements Percentable
     {
         return $this->valuePercent(10);
     }
+
+    public static function nonTaxedTypes()
+    {
+        return ['food', 'medicals'];
+    }
 }
