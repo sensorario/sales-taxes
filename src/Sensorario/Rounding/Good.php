@@ -2,8 +2,8 @@
 
 namespace Sensorario\Rounding;
 
-use Sensorario\Rounding\Percentable;
 use Sensorario\Rounding\Money;
+use Sensorario\Rounding\Percentable;
 
 final class Good implements Percentable
 {
