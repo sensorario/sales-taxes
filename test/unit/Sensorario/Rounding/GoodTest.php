@@ -63,7 +63,7 @@ final class GoodTest extends PHPUnit_Framework_TestCase
     public function testNonTaxedTypes()
     {
         $this->assertEquals(
-            ['food', 'medicals'],
+            ['book', 'food', 'medicals'],
             Good::nonTaxedTypes()
         );
     }

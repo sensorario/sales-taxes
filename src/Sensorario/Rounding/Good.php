@@ -40,7 +40,7 @@ final class Good implements Percentable
 
     public function isTaxed()
     {
-        if (in_array($this->params['type'], ['food', 'medicals'])) {
+        if (in_array($this->params['type'], self::nonTaxedTypes())) {
             return false;
         }
 
@@ -70,6 +70,10 @@ final class Good implements Percentable
 
     public static function nonTaxedTypes()
     {
-        return ['food', 'medicals'];
+        return [
+            'book',
+            'food',
+            'medicals'
+        ];
     }
 }
