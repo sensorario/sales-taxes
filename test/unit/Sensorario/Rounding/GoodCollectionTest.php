@@ -88,4 +88,41 @@ final class GoodCollectionTest extends PHPUnit_Framework_TestCase
             $this->collection->totalAmount()
         );
     }
+
+    public function testKnowsTotalTaxesOfGoodThree()
+    {
+        $this->collection->addItem(Good::box([
+            'type'     => 'perfume',
+            'price'    => 27.99,
+            'imported' => true,
+        ]));
+
+        $this->collection->addItem(Good::box([
+            'type'     => 'perfume',
+            'price'    => 18.99,
+            'imported' => false,
+        ]));
+
+        $this->collection->addItem(Good::box([
+            'type'     => 'medicals',
+            'price'    => 9.75,
+            'imported' => false,
+        ]));
+
+        $this->collection->addItem(Good::box([
+            'type'     => 'food',
+            'price'    => 11.25,
+            'imported' => true,
+        ]));
+
+        $this->assertEquals(
+            6.70,
+            $this->collection->salesTaxes()
+        );
+
+        $this->assertEquals(
+            74.68,
+            $this->collection->totalAmount()
+        );
+    }
 }

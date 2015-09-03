@@ -33,13 +33,19 @@ class GoodCollection
 
     public function salesTaxes()
     {
-        $salesTaxes = 0;
+        $taxes = 0;
 
         foreach ($this->goods as $good) {
-            $salesTaxes += $good->salesTaxes();
+            if ($good->isTaxed()) {
+                $taxes += $good->valuePercent(10);
+            }
+
+            if ($good->isImported()) {
+                $taxes += $good->valuePercent(5);
+            }
         }
 
-        return $salesTaxes;
+        return $taxes;
     }
 
     public function totalAmount()
