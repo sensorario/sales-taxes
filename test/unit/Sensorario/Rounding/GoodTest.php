@@ -39,7 +39,7 @@ final class GoodTest extends PHPUnit_Framework_TestCase
     public function testNotImportedTaxed()
     {
         $good = Good::box([
-            'type'     => 'perfume',
+            'type'     => 'music cd',
             'price'    => 18.99,
             'imported' => false,
         ]);
