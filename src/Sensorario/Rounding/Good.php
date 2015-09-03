@@ -19,20 +19,30 @@ final class Good implements Percentable
         return new self($params);
     }
 
-    public function priceInCents()
-    {
-        return $this->params['price_in_cents'];
-    }
-
     public function valuePercent($percent)
     {
-        $money = Money::fromNumber($this->params['price']);
+        $money = Money::fromCent(
+            $this->params['price'] * 100
+        );
 
-        return $money->valuePercent($percent);
+        return 0.1 * $money->valuePercent($percent);
     }
 
     public function isImported()
     {
         return $this->params['imported'];
+    }
+
+    public function price()
+    {
+        return $this->params['price'];
+    }
+
+    public function finalValue()
+    {
+        $price      = $this->price();
+        $salesTaxes = $this->valuePercent(5);
+
+        return $price + $salesTaxes;
     }
 }
