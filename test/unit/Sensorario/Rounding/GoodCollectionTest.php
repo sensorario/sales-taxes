@@ -16,8 +16,26 @@ final class GoodCollectionTest extends PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            [],
-            $collection->items()
+            0,
+            $collection->itemCount()
+        );
+    }
+
+    public function testAcceptNewGoodItems()
+    {
+        $collection = new GoodCollection();
+
+        $good = Good::box([
+            'type'     => 'music cd',
+            'price'    => 18.99,
+            'imported' => false,
+        ]);
+
+        $collection->addItem($good);
+
+        $this->assertEquals(
+            1,
+            $collection->itemCount()
         );
     }
 }
