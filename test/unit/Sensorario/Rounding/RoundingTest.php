@@ -3,6 +3,8 @@
 namespace Sensorario\Rounding;
 
 use PHPUnit_Framework_TestCase;
+use Sensorario\Rounding\Percentable;
+use Sensorario\Rounding\Number;
 
 final class RoundingTest extends PHPUnit_Framework_TestCase
 {
@@ -18,50 +20,5 @@ final class RoundingTest extends PHPUnit_Framework_TestCase
 
         $money = Number::fromCent(100);
         $this->assertEquals(5, $money->valuePercent(5));
-    }
-}
-
-abstract class IntegerValue
-{
-    protected $cents;
-
-    protected function __construct($cents)
-    {
-        $this->cents = $cents;
-    }
-
-    public static function fromNumber($number)
-    {
-        return new static($number * 100);
-    }
-
-    public static function fromCent($cents)
-    {
-        return new static($cents);
-    }
-
-    public function value()
-    {
-        return $this->cents;
-    }
-
-    abstract public function valuePercent($percent);
-}
-
-final class Money extends IntegerValue
-{
-    public function valuePercent($percent) {
-        $number = $this->cents / 100 * $percent;
-
-        return ceil($number/10);
-    }
-}
-
-final class Number extends IntegerValue
-{
-    public function valuePercent($percent) {
-        $number = $this->cents / 100 * $percent;
-
-        return (int) $number;
     }
 }
