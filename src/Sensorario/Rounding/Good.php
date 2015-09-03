@@ -40,8 +40,11 @@ final class Good implements Percentable
 
     public function isTaxed()
     {
-        return $this->params['type'] == 'perfume'
-            || $this->params['type'] == 'music cd';
+        if (in_array($this->params['type'], ['food', 'medicals'])) {
+            return false;
+        }
+
+        return true;
     }
 
     public function finalValue()
