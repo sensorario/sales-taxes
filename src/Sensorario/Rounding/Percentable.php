@@ -4,5 +4,5 @@ namespace Sensorario\Rounding;
 
 interface Percentable
 {
-    public function valuePercent($percent);
+    public function partsOverTen($percent);
 }

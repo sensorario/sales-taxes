@@ -28,5 +28,5 @@ abstract class IntegerValue implements Percentable
         return $this->cents;
     }
 
-    abstract public function valuePercent($percent);
+    abstract public function partsOverTen($percent);
 }

@@ -37,11 +37,11 @@ class GoodCollection
 
         foreach ($this->goods as $good) {
             if ($good->isTaxed()) {
-                $taxes += $good->valuePercent(10);
+                $taxes += $good->partsOverTen(10);
             }
 
             if ($good->isImported()) {
-                $taxes += $good->valuePercent(5);
+                $taxes += $good->partsOverTen(5);
             }
         }
 

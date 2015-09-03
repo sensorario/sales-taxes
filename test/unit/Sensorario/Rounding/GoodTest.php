@@ -16,7 +16,7 @@ final class GoodTest extends PHPUnit_Framework_TestCase
         ]);
 
         $this->assertEquals(11.25, $good->price());
-        $this->assertEquals(0.6, $good->valuePercent(5));
+        $this->assertEquals(0.6, $good->partsOverTen(5));
         $this->assertEquals(0.6, $good->importDuty());
         $this->assertSame(false, $good->isTaxed());
         $this->assertEquals(0, $good->salesTaxes());

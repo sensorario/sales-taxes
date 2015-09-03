@@ -19,13 +19,13 @@ final class Good implements Percentable
         return new self($params);
     }
 
-    public function valuePercent($percent)
+    public function partsOverTen($percent)
     {
         $money = Money::fromCent(
             $this->params['price'] * 100
         );
 
-        return 0.1 * $money->valuePercent($percent);
+        return 0.1 * $money->partsOverTen($percent);
     }
 
     public function isImported()
@@ -58,13 +58,13 @@ final class Good implements Percentable
 
     public function importDuty()
     {
-        return $this->valuePercent(5);
+        return $this->partsOverTen(5);
     }
 
     public function salesTaxes()
     {
         return $this->isTaxed()
-            ? $this->valuePercent(10)
+            ? $this->partsOverTen(10)
             : 0
         ;
     }
