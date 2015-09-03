@@ -26,10 +26,11 @@ final class GoodTest extends PHPUnit_Framework_TestCase
     {
         $good = Good::box([
             'type'     => 'perfume',
-            'price'    => 11.25,
+            'price'    => 27.99,
             'imported' => true,
         ]);
 
         $this->assertSame(true, $good->isTaxed());
+        $this->assertEquals(32.19, $good->finalValue());
     }
 }
