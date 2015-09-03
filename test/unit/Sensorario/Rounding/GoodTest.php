@@ -7,21 +7,14 @@ use Sensorario\Rounding\Good;
 
 final class GoodTest extends PHPUnit_Framework_TestCase
 {
-    public function test()
+    public function testImportedNotTaxed()
     {
         $good = Good::box([
-            'price_in_cents' => 1125,
-            'price' => 11.25
+            'price'    => 11.25,
+            'imported' => true,
         ]);
 
-        $this->assertEquals(
-            1125,
-            $good->priceInCents(5)
-        );
-
-        $this->assertEquals(
-            6,
-            $good->valuePercent(5)
-        );
+        $this->assertEquals(6, $good->valuePercent(5));
+        $this->assertSame(true, $good->isImported());
     }
 }

@@ -30,4 +30,9 @@ final class Good implements Percentable
 
         return $money->valuePercent($percent);
     }
+
+    public function isImported()
+    {
+        return $this->params['imported'];
+    }
 }
