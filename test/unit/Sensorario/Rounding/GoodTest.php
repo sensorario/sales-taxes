@@ -33,4 +33,28 @@ final class GoodTest extends PHPUnit_Framework_TestCase
         $this->assertSame(true, $good->isTaxed());
         $this->assertEquals(32.19, $good->finalValue());
     }
+
+    public function testNotImportedTaxed()
+    {
+        $good = Good::box([
+            'type'     => 'perfume',
+            'price'    => 18.99,
+            'imported' => false,
+        ]);
+
+        $this->assertSame(true, $good->isTaxed());
+        $this->assertEquals(20.89, $good->finalValue());
+    }
+
+    public function testNotImportedNotTaxed()
+    {
+        $good = Good::box([
+            'type'     => 'pills',
+            'price'    => 9.75,
+            'imported' => false,
+        ]);
+
+        $this->assertSame(false, $good->isTaxed());
+        $this->assertEquals(9.75, $good->finalValue());
+    }
 }
