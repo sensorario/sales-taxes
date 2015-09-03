@@ -66,4 +66,9 @@ final class Good implements Percentable
     {
         return $this->valuePercent(5);
     }
+
+    public function salesTaxes()
+    {
+        return $this->valuePercent(10);
+    }
 }
