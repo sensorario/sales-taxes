@@ -50,7 +50,7 @@ final class Good implements Percentable
         $importDuty = 0;
 
         if ($this->isImported()) {
-            $importDuty = $this->valuePercent(5);
+            $importDuty = $this->importDuty();
         }
 
         $salesTaxes = 0;
