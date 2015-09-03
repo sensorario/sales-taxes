@@ -53,9 +53,7 @@ final class Good implements Percentable
 
         $importDuty = $this->isImported() ? $this->importDuty() : 0 ;
 
-        $salesTaxes = $this->isTaxed() ? $this->salesTaxes() : 0 ;
-
-        return $price + $importDuty + $salesTaxes;
+        return $price + $importDuty + $this->salesTaxes();
     }
 
     public function importDuty()
@@ -65,7 +63,10 @@ final class Good implements Percentable
 
     public function salesTaxes()
     {
-        return $this->valuePercent(10);
+        return $this->isTaxed()
+            ? $this->valuePercent(10)
+            : 0
+        ;
     }
 
     public static function nonTaxedTypes()

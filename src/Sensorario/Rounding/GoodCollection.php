@@ -30,4 +30,17 @@ class GoodCollection
             $this->goods
         );
     }
+
+    public function salesTaxes()
+    {
+        $salesTaxes = 0;
+
+        foreach ($this->goods as $good) {
+            if ($good->isTaxed()) {
+                $salesTaxes += $good->salesTaxes();
+            }
+        }
+
+        return $salesTaxes;
+    }
 }
