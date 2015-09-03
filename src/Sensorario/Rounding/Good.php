@@ -61,4 +61,9 @@ final class Good implements Percentable
 
         return $price + $importDuty + $salesTaxes;
     }
+
+    public function importDuty()
+    {
+        return $this->valuePercent(5);
+    }
 }
