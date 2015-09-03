@@ -22,4 +22,12 @@ class GoodCollection
     {
         $this->goods[] = $good;
     }
+
+    public function has(Good $good)
+    {
+        return in_array(
+            $good,
+            $this->goods
+        );
+    }
 }

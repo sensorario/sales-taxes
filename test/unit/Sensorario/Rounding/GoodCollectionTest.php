@@ -39,4 +39,22 @@ final class GoodCollectionTest extends PHPUnit_Framework_TestCase
             $this->collection->itemCount()
         );
     }
+
+    public function testknowIfAGoodIsInsideTheCollection()
+    {
+        $cd = Good::box([
+            'type'     => 'music cd',
+            'price'    => 18.99,
+            'imported' => false,
+        ]);
+
+        $pills = Good::box([
+            'type'     => 'pills',
+        ]);
+
+        $this->collection->addItem($cd);
+
+        $this->assertTrue($this->collection->has($cd));
+        $this->assertFalse($this->collection->has($pills));
+    }
 }
