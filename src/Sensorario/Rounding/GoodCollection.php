@@ -36,9 +36,7 @@ class GoodCollection
         $salesTaxes = 0;
 
         foreach ($this->goods as $good) {
-            if ($good->isTaxed()) {
-                $salesTaxes += $good->salesTaxes();
-            }
+            $salesTaxes += $good->salesTaxes();
         }
 
         return $salesTaxes;
