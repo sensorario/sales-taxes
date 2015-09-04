@@ -34,16 +34,18 @@ final class Good
 
     public function finalValue()
     {
-        $price = $this->getPropery('price');
-
-        $importDuty = $this->getPropery('imported') ? $this->importDuty() : 0 ;
-
-        return $price + $importDuty + $this->salesTaxes();
+        return $this->getPropery('price')
+            + $this->importDuty()
+            + $this->salesTaxes()
+        ;
     }
 
     public function importDuty()
     {
-        return $this->valueInPercentage(5);
+        return $this->getPropery('imported')
+            ? $this->valueInPercentage(5)
+            : 0
+        ;
     }
 
     public function salesTaxes()
