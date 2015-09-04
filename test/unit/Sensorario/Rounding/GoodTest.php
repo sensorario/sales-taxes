@@ -7,6 +7,38 @@ use Sensorario\Rounding\Good;
 
 final class GoodTest extends PHPUnit_Framework_TestCase
 {
+    public function testIsTaxableByDefault()
+    {
+        $good = Good::withAttributes([
+            'type'     => 'fake type',
+        ]);
+
+        $this->assertSame(true, $good->isTaxable());
+        $this->assertSame(false, $good->isntTaxable());
+    }
+
+    /**
+     * @dataProvider goodsTaxesExempt
+     */
+    public function testGoodsTaxesExepmt($type)
+    {
+        $good = Good::withAttributes([
+            'type' => $type,
+        ]);
+
+        $this->assertSame(false, $good->isTaxable());
+        $this->assertSame(true, $good->isntTaxable());
+    }
+
+    public function goodsTaxesExempt()
+    {
+        return [
+            ['book'],
+            ['food'],
+            ['medicals'],
+        ];
+    }
+
     public function testImportedNotTaxed()
     {
         $good = Good::withAttributes([
@@ -17,8 +49,6 @@ final class GoodTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(0.6, $good->monetaryValueInPercentage(5));
         $this->assertEquals(0.6, $good->importDuty());
-        $this->assertSame(false, $good->isTaxable());
-        $this->assertSame(true, $good->isntTaxable());
         $this->assertEquals(0, $good->salesTaxes());
         $this->assertEquals(11.85, $good->finalValue());
     }
@@ -31,7 +61,6 @@ final class GoodTest extends PHPUnit_Framework_TestCase
             'imported' => true,
         ]);
 
-        $this->assertSame(true, $good->isTaxable());
         $this->assertEquals(32.19, $good->finalValue());
         $this->assertEquals(2.8, $good->salesTaxes());
     }
@@ -44,7 +73,6 @@ final class GoodTest extends PHPUnit_Framework_TestCase
             'imported' => false,
         ]);
 
-        $this->assertSame(true, $good->isTaxable());
         $this->assertEquals(20.89, $good->finalValue());
     }
 
@@ -56,7 +84,6 @@ final class GoodTest extends PHPUnit_Framework_TestCase
             'imported' => false,
         ]);
 
-        $this->assertSame(false, $good->isTaxable());
         $this->assertEquals(9.75, $good->finalValue());
     }
 
