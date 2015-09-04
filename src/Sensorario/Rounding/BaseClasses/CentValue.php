@@ -11,11 +11,6 @@ abstract class CentValue
         $this->cents = $cents;
     }
 
-    public static function fromNumber($number)
-    {
-        return new static($number * 100);
-    }
-
     public static function fromCent($cents)
     {
         return new static($cents);
