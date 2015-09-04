@@ -15,12 +15,10 @@ final class GoodTest extends PHPUnit_Framework_TestCase
             'imported' => true,
         ]);
 
-        $this->assertEquals(11.25, $good->price());
         $this->assertEquals(0.6, $good->partsOverTen(5));
         $this->assertEquals(0.6, $good->importDuty());
         $this->assertSame(false, $good->isTaxed());
         $this->assertEquals(0, $good->salesTaxes());
-        $this->assertSame(true, $good->isImported());
         $this->assertEquals(11.85, $good->finalValue());
     }
 
@@ -66,6 +64,20 @@ final class GoodTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             ['book', 'food', 'medicals'],
             Good::nonTaxedTypes()
+        );
+    }
+
+    public function testPropertyGetter()
+    {
+        $good = Good::box([
+            'type'     => 'food',
+            'price'    => 11.25,
+            'imported' => true,
+        ]);
+
+        $this->assertEquals(
+            11.25,
+            $good->getPropery('price')
         );
     }
 }

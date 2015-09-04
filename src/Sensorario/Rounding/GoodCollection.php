@@ -40,7 +40,7 @@ class GoodCollection
                 $taxes += $good->partsOverTen(10);
             }
 
-            if ($good->isImported()) {
+            if ($good->getPropery('imported')) {
                 $taxes += $good->partsOverTen(5);
             }
         }
@@ -53,7 +53,7 @@ class GoodCollection
         $rawPriceAmount = 0;
 
         foreach ($this->goods as $good) {
-            $rawPriceAmount += $good->price();
+            $rawPriceAmount += $good->getPropery('price');
         }
 
         return $rawPriceAmount

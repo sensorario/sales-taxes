@@ -27,16 +27,6 @@ final class Good
         return 0.1 * $money->partsOverTen($percent);
     }
 
-    public function isImported()
-    {
-        return $this->params['imported'];
-    }
-
-    public function price()
-    {
-        return $this->params['price'];
-    }
-
     public function isTaxed()
     {
         if (in_array($this->params['type'], self::nonTaxedTypes())) {
@@ -48,9 +38,9 @@ final class Good
 
     public function finalValue()
     {
-        $price      = $this->price();
+        $price = $this->getPropery('price');
 
-        $importDuty = $this->isImported() ? $this->importDuty() : 0 ;
+        $importDuty = $this->getPropery('imported') ? $this->importDuty() : 0 ;
 
         return $price + $importDuty + $this->salesTaxes();
     }
@@ -75,5 +65,10 @@ final class Good
             'food',
             'medicals'
         ];
+    }
+
+    public function getPropery($propertyName)
+    {
+        return $this->params[$propertyName];
     }
 }
