@@ -11,4 +11,9 @@ final class Number extends CentValue
 
         return (int) $number;
     }
+
+    public function value()
+    {
+        return $this->cents;
+    }
 }
