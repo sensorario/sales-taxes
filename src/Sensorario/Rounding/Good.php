@@ -23,12 +23,7 @@ final class Good
         return new self($attributes);
     }
 
-    public function isTaxable()
-    {
-        return !$this->isntTaxable();
-    }
-
-    public function isntTaxable()
+    public function isTaxesExempt()
     {
         $type = $this->getPropery('type');
 
@@ -62,9 +57,9 @@ final class Good
 
     public function salesTaxes()
     {
-        return $this->isTaxable()
-            ? $this->monetaryValueInPercentage(10)
-            : 0
+        return $this->isTaxesExempt()
+            ? 0
+            : $this->monetaryValueInPercentage(10)
         ;
     }
 }

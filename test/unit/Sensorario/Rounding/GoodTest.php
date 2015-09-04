@@ -13,8 +13,7 @@ final class GoodTest extends PHPUnit_Framework_TestCase
             'type'     => 'fake type',
         ]);
 
-        $this->assertSame(true, $good->isTaxable());
-        $this->assertSame(false, $good->isntTaxable());
+        $this->assertSame(false, $good->isTaxesExempt());
     }
 
     /**
@@ -26,8 +25,7 @@ final class GoodTest extends PHPUnit_Framework_TestCase
             'type' => $type,
         ]);
 
-        $this->assertSame(false, $good->isTaxable());
-        $this->assertSame(true, $good->isntTaxable());
+        $this->assertSame(true, $good->isTaxesExempt());
     }
 
     public function goodsTaxesExempt()
