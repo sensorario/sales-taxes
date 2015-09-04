@@ -16,8 +16,8 @@ final class Money
         return new static($number * 100);
     }
 
-    public function partsOverTen($percent) {
-        $number = $this->cents / 100 * $percent;
+    public function partsOverTen($perten) {
+        $number = $this->cents / 100 * $perten;
 
         $ceil = ceil($number/10);
 
