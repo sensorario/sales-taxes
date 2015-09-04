@@ -6,22 +6,22 @@ use Sensorario\Rounding\Money;
 
 final class Good
 {
-    private $params;
+    private $attributes;
 
-    private function __construct(array $params)
+    private function __construct(array $attributes)
     {
-        $this->params = $params;
+        $this->attributes = $attributes;
     }
 
-    public function box(array $params)
+    public function box(array $attributes)
     {
-        return new self($params);
+        return new self($attributes);
     }
 
-    public function partsOverTen($percent)
+    public function partsPercent($percent)
     {
         $money = Money::fromCent(
-            $this->params['price'] * 100
+            $this->attributes['price'] * 100
         );
 
         return 0.1 * $money->partsOverTen($percent);
@@ -29,7 +29,7 @@ final class Good
 
     public function isTaxed()
     {
-        if (in_array($this->params['type'], self::nonTaxedTypes())) {
+        if (in_array($this->attributes['type'], self::nonTaxedTypes())) {
             return false;
         }
 
@@ -47,13 +47,13 @@ final class Good
 
     public function importDuty()
     {
-        return $this->partsOverTen(5);
+        return $this->partsPercent(5);
     }
 
     public function salesTaxes()
     {
         return $this->isTaxed()
-            ? $this->partsOverTen(10)
+            ? $this->partsPercent(10)
             : 0
         ;
     }
@@ -69,6 +69,6 @@ final class Good
 
     public function getPropery($propertyName)
     {
-        return $this->params[$propertyName];
+        return $this->attributes[$propertyName];
     }
 }
