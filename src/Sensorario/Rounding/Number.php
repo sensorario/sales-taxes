@@ -6,10 +6,10 @@ use Sensorario\Rounding\BaseClasses\CentValue;
 
 final class Number extends CentValue
 {
-    public function partsOverTen($percent) {
-        $number = $this->cents / 100 * $percent;
+    public function partsPercent($percent) {
+       $number = $this->cents / 100 * $percent;
 
-        return (int) $number;
+       return (int) $number;
     }
 
     public function value()

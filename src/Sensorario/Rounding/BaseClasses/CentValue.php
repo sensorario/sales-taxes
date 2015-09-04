@@ -16,8 +16,6 @@ abstract class CentValue
         return new static($cents);
     }
 
-    abstract public function partsOverTen($percent);
-
     public function value()
     {
         return $this->cents;
