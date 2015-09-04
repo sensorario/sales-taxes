@@ -20,7 +20,7 @@ final class GoodCollectionTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             0,
-            $this->collection->itemCount()
+            $this->collection->count()
         );
     }
 
@@ -36,7 +36,7 @@ final class GoodCollectionTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             1,
-            $this->collection->itemCount()
+            $this->collection->count()
         );
     }
 

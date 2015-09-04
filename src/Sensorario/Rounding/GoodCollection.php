@@ -13,7 +13,7 @@ class GoodCollection
         return true;
     }
 
-    public function itemCount()
+    public function count()
     {
         return count($this->goods);
     }
