@@ -16,16 +16,16 @@ final class Money
         return new static($number * 100);
     }
 
-    public function partsOverTen($perten) {
+    public function partsPercent($perten) {
         $number = $this->cents / 100 * $perten;
 
-        $ceil = ceil($number/10);
+        $result = ceil($number/10);
 
         if (($number - (int) $number) == 0.5) {
-            return $ceil - 0.5;
+            $result -= 0.5;
         }
 
-        return $ceil;
+        return 0.1 * $result;
     }
 
     public function valueInCents()

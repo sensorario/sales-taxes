@@ -24,7 +24,7 @@ final class Good
             $this->attributes['price'] * 100
         );
 
-        return 0.1 * $money->partsOverTen($percent);
+        return $money->partsPercent($percent);
     }
 
     public function isTaxed()

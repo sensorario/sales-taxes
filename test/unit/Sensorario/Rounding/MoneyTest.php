@@ -12,6 +12,6 @@ final class MoneyTest extends PHPUnit_Framework_TestCase
     {
         $money = Money::fromFloat(11.25);
         $this->assertEquals(1125, $money->valueInCents());
-        $this->assertEquals(6, $money->partsOverTen(5));
+        $this->assertEquals(0.6, $money->partsPercent(5));
     }
 }
