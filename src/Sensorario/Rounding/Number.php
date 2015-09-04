@@ -4,11 +4,11 @@ namespace Sensorario\Rounding;
 
 final class Number
 {
-    private $cents;
+    private $value;
 
-    private function __construct($cents)
+    private function __construct($value)
     {
-        $this->cents = $cents;
+        $this->value = $value;
     }
 
     public function fromValue($value)
@@ -17,13 +17,13 @@ final class Number
     }
 
     public function partsPercent($percent) {
-        $number = $this->cents / 100 * $percent;
+        $number = $this->value / 100 * $percent;
 
         return (int) $number;
     }
 
     public function value()
     {
-        return $this->cents;
+        return $this->value;
     }
 }
