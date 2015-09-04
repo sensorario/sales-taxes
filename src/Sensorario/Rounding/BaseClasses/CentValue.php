@@ -2,9 +2,7 @@
 
 namespace Sensorario\Rounding\BaseClasses;
 
-use Sensorario\Rounding\Percentable;
-
-abstract class CentValue implements Percentable
+abstract class CentValue
 {
     protected $cents;
 

@@ -3,9 +3,8 @@
 namespace Sensorario\Rounding;
 
 use Sensorario\Rounding\Money;
-use Sensorario\Rounding\Percentable;
 
-final class Good implements Percentable
+final class Good
 {
     private $params;
 
