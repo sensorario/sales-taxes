@@ -10,9 +10,4 @@ abstract class CentValue
     {
         $this->cents = $cents;
     }
-
-    public static function fromCent($cents)
-    {
-        return new static($cents);
-    }
 }

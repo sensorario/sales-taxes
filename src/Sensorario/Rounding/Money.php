@@ -27,4 +27,9 @@ final class Money extends CentValue
     {
         return $this->cents;
     }
+
+    public static function fromCent($cents)
+    {
+        return new static($cents);
+    }
 }
