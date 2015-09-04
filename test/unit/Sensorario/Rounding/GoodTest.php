@@ -18,6 +18,7 @@ final class GoodTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(0.6, $good->valueInPercentage(5));
         $this->assertEquals(0.6, $good->importDuty());
         $this->assertSame(false, $good->isTaxable());
+        $this->assertSame(true, $good->isntTaxable());
         $this->assertEquals(0, $good->salesTaxes());
         $this->assertEquals(11.85, $good->finalValue());
     }
@@ -57,14 +58,6 @@ final class GoodTest extends PHPUnit_Framework_TestCase
 
         $this->assertSame(false, $good->isTaxable());
         $this->assertEquals(9.75, $good->finalValue());
-    }
-
-    public function testNonTaxedTypes()
-    {
-        $this->assertEquals(
-            ['book', 'food', 'medicals'],
-            Good::nonTaxedTypes()
-        );
     }
 
     public function testPropertyGetter()

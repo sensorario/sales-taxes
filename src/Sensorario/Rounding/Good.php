@@ -29,11 +29,7 @@ final class Good
 
     public function isTaxable()
     {
-        if (in_array($this->attributes['type'], self::nonTaxedTypes())) {
-            return false;
-        }
-
-        return true;
+        return !$this->isntTaxable();
     }
 
     public function finalValue()
@@ -58,17 +54,15 @@ final class Good
         ;
     }
 
-    public static function nonTaxedTypes()
-    {
-        return [
-            'book',
-            'food',
-            'medicals'
-        ];
-    }
-
     public function getPropery($propertyName)
     {
         return $this->attributes[$propertyName];
+    }
+
+    public function isntTaxable()
+    {
+        $type = $this->getPropery('type');
+
+        return in_array($type, ['book', 'food', 'medicals']);
     }
 }
