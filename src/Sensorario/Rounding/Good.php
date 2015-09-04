@@ -35,7 +35,7 @@ final class Good
         return in_array($type, ['book', 'food', 'medicals']);
     }
 
-    public function monetaryValuealueInPercentage($percent)
+    public function monetaryValueInPercentage($percent)
     {
         $money = Money::fromCent(
             $this->attributes['price'] * 100
@@ -55,7 +55,7 @@ final class Good
     public function importDuty()
     {
         return $this->getPropery('imported')
-            ? $this->monetaryValuealueInPercentage(5)
+            ? $this->monetaryValueInPercentage(5)
             : 0
         ;
     }
@@ -63,7 +63,7 @@ final class Good
     public function salesTaxes()
     {
         return $this->isTaxable()
-            ? $this->monetaryValuealueInPercentage(10)
+            ? $this->monetaryValueInPercentage(10)
             : 0
         ;
     }
