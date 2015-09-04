@@ -17,6 +17,10 @@ final class GoodCollectionTest extends PHPUnit_Framework_TestCase
             true,
             $this->collection->isEmpty()
         );
+    }
+
+    public function testCountZeroElementAftercreation()
+    {
 
         $this->assertEquals(
             0,
@@ -24,7 +28,7 @@ final class GoodCollectionTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    public function testAcceptNewGoodItems()
+    public function testCountIncrementsAfterOneGoodIsAddedToCollection()
     {
         $good = Good::withAttributes([
             'type'     => 'music cd',
@@ -89,6 +93,31 @@ final class GoodCollectionTest extends PHPUnit_Framework_TestCase
         );
     }
 
+    public function testKnowsTotalTaxesOfGoodTwo()
+    {
+        $this->collection->addItem(Good::withAttributes([
+            'type'     => 'food',
+            'price'    => 10.00,
+            'imported' => true,
+        ]));
+
+        $this->collection->addItem(Good::withAttributes([
+            'type'     => 'perfume',
+            'price'    => 47.50,
+            'imported' => true,
+        ]));
+
+        $this->assertEquals(
+            7.65,
+            $this->collection->salesTaxes()
+        );
+
+        $this->assertEquals(
+            65.15,
+            $this->collection->totalAmount()
+        );
+    }
+
     public function testKnowsTotalTaxesOfGoodThree()
     {
         $this->collection->addItem(Good::withAttributes([
@@ -122,31 +151,6 @@ final class GoodCollectionTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             74.68,
-            $this->collection->totalAmount()
-        );
-    }
-
-    public function testKnowsTotalTaxesOfGoodTwo()
-    {
-        $this->collection->addItem(Good::withAttributes([
-            'type'     => 'food',
-            'price'    => 10.00,
-            'imported' => true,
-        ]));
-
-        $this->collection->addItem(Good::withAttributes([
-            'type'     => 'perfume',
-            'price'    => 47.50,
-            'imported' => true,
-        ]));
-
-        $this->assertEquals(
-            7.65,
-            $this->collection->salesTaxes()
-        );
-
-        $this->assertEquals(
-            65.15,
             $this->collection->totalAmount()
         );
     }
