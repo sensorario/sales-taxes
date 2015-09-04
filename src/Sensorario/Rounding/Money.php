@@ -2,7 +2,7 @@
 
 namespace Sensorario\Rounding;
 
-use Sensorario\Rounding\IntegerValue;
+use Sensorario\Rounding\BaseClasses\CentValue;
 
 final class Money extends CentValue
 {
