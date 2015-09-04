@@ -26,7 +26,7 @@ final class GoodCollectionTest extends PHPUnit_Framework_TestCase
 
     public function testAcceptNewGoodItems()
     {
-        $good = Good::box([
+        $good = Good::withAttributes([
             'type'     => 'music cd',
             'price'    => 18.99,
             'imported' => false,
@@ -42,13 +42,13 @@ final class GoodCollectionTest extends PHPUnit_Framework_TestCase
 
     public function testknowIfAGoodIsInsideTheCollection()
     {
-        $cd = Good::box([
+        $cd = Good::withAttributes([
             'type'     => 'music cd',
             'price'    => 18.99,
             'imported' => false,
         ]);
 
-        $pills = Good::box([
+        $pills = Good::withAttributes([
             'type'     => 'pills',
         ]);
 
@@ -60,19 +60,19 @@ final class GoodCollectionTest extends PHPUnit_Framework_TestCase
 
     public function testKnowsTotalTaxesOfGood()
     {
-        $this->collection->addItem(Good::box([
+        $this->collection->addItem(Good::withAttributes([
             'type'     => 'book',
             'price'    => 12.49,
             'imported' => false,
         ]));
 
-        $this->collection->addItem(Good::box([
+        $this->collection->addItem(Good::withAttributes([
             'type'     => 'music cd',
             'price'    => 14.99,
             'imported' => false,
         ]));
 
-        $this->collection->addItem(Good::box([
+        $this->collection->addItem(Good::withAttributes([
             'type'     => 'food',
             'price'    => 0.85,
             'imported' => false,
@@ -91,25 +91,25 @@ final class GoodCollectionTest extends PHPUnit_Framework_TestCase
 
     public function testKnowsTotalTaxesOfGoodThree()
     {
-        $this->collection->addItem(Good::box([
+        $this->collection->addItem(Good::withAttributes([
             'type'     => 'perfume',
             'price'    => 27.99,
             'imported' => true,
         ]));
 
-        $this->collection->addItem(Good::box([
+        $this->collection->addItem(Good::withAttributes([
             'type'     => 'perfume',
             'price'    => 18.99,
             'imported' => false,
         ]));
 
-        $this->collection->addItem(Good::box([
+        $this->collection->addItem(Good::withAttributes([
             'type'     => 'medicals',
             'price'    => 9.75,
             'imported' => false,
         ]));
 
-        $this->collection->addItem(Good::box([
+        $this->collection->addItem(Good::withAttributes([
             'type'     => 'food',
             'price'    => 11.25,
             'imported' => true,
@@ -128,13 +128,13 @@ final class GoodCollectionTest extends PHPUnit_Framework_TestCase
 
     public function testKnowsTotalTaxesOfGoodTwo()
     {
-        $this->collection->addItem(Good::box([
+        $this->collection->addItem(Good::withAttributes([
             'type'     => 'food',
             'price'    => 10.00,
             'imported' => true,
         ]));
 
-        $this->collection->addItem(Good::box([
+        $this->collection->addItem(Good::withAttributes([
             'type'     => 'perfume',
             'price'    => 47.50,
             'imported' => true,

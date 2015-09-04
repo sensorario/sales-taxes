@@ -13,7 +13,7 @@ final class Good
         $this->attributes = $attributes;
     }
 
-    public function box(array $attributes)
+    public function withAttributes(array $attributes)
     {
         return new self($attributes);
     }

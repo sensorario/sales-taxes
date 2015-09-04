@@ -9,7 +9,7 @@ final class GoodTest extends PHPUnit_Framework_TestCase
 {
     public function testImportedNotTaxed()
     {
-        $good = Good::box([
+        $good = Good::withAttributes([
             'type'     => 'food',
             'price'    => 11.25,
             'imported' => true,
@@ -24,7 +24,7 @@ final class GoodTest extends PHPUnit_Framework_TestCase
 
     public function testImportedTaxed()
     {
-        $good = Good::box([
+        $good = Good::withAttributes([
             'type'     => 'perfume',
             'price'    => 27.99,
             'imported' => true,
@@ -37,7 +37,7 @@ final class GoodTest extends PHPUnit_Framework_TestCase
 
     public function testNotImportedTaxed()
     {
-        $good = Good::box([
+        $good = Good::withAttributes([
             'type'     => 'music cd',
             'price'    => 18.99,
             'imported' => false,
@@ -49,7 +49,7 @@ final class GoodTest extends PHPUnit_Framework_TestCase
 
     public function testNotImportedNotTaxed()
     {
-        $good = Good::box([
+        $good = Good::withAttributes([
             'type'     => 'medicals',
             'price'    => 9.75,
             'imported' => false,
@@ -69,7 +69,7 @@ final class GoodTest extends PHPUnit_Framework_TestCase
 
     public function testPropertyGetter()
     {
-        $good = Good::box([
+        $good = Good::withAttributes([
             'type'     => 'food',
             'price'    => 11.25,
             'imported' => true,
