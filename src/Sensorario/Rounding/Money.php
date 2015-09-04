@@ -22,4 +22,9 @@ final class Money extends CentValue
 
         return $ceil;
     }
+
+    public function valueInCents()
+    {
+        return $this->cents;
+    }
 }
