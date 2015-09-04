@@ -2,19 +2,24 @@
 
 namespace Sensorario\Rounding;
 
-use Sensorario\Rounding\BaseClasses\CentValue;
-
-final class Number extends CentValue
+final class Number
 {
+    private $cents;
+
+    private function __construct($cents)
+    {
+        $this->cents = $cents;
+    }
+
     public function fromValue($value)
     {
         return new self($value);
     }
 
     public function partsPercent($percent) {
-       $number = $this->cents / 100 * $percent;
+        $number = $this->cents / 100 * $percent;
 
-       return (int) $number;
+        return (int) $number;
     }
 
     public function value()

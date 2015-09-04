@@ -2,10 +2,15 @@
 
 namespace Sensorario\Rounding;
 
-use Sensorario\Rounding\BaseClasses\CentValue;
-
-final class Money extends CentValue
+final class Money
 {
+    private $cents;
+
+    private function __construct($cents)
+    {
+        $this->cents = $cents;
+    }
+
     public static function fromFloat($number)
     {
         return new static($number * 100);
