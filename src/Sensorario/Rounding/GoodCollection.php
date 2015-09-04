@@ -36,7 +36,7 @@ class GoodCollection
         $taxes = 0;
 
         foreach ($this->goods as $good) {
-            if ($good->isTaxed()) {
+            if ($good->isTaxable()) {
                 $taxes += $good->partsPercent(10);
             }
 

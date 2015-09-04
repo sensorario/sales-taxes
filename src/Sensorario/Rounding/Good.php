@@ -27,7 +27,7 @@ final class Good
         return $money->partsPercent($percent);
     }
 
-    public function isTaxed()
+    public function isTaxable()
     {
         if (in_array($this->attributes['type'], self::nonTaxedTypes())) {
             return false;
@@ -52,7 +52,7 @@ final class Good
 
     public function salesTaxes()
     {
-        return $this->isTaxed()
+        return $this->isTaxable()
             ? $this->partsPercent(10)
             : 0
         ;

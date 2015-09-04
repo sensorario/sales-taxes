@@ -17,7 +17,7 @@ final class GoodTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(0.6, $good->partsPercent(5));
         $this->assertEquals(0.6, $good->importDuty());
-        $this->assertSame(false, $good->isTaxed());
+        $this->assertSame(false, $good->isTaxable());
         $this->assertEquals(0, $good->salesTaxes());
         $this->assertEquals(11.85, $good->finalValue());
     }
@@ -30,7 +30,7 @@ final class GoodTest extends PHPUnit_Framework_TestCase
             'imported' => true,
         ]);
 
-        $this->assertSame(true, $good->isTaxed());
+        $this->assertSame(true, $good->isTaxable());
         $this->assertEquals(32.19, $good->finalValue());
         $this->assertEquals(2.8, $good->salesTaxes());
     }
@@ -43,7 +43,7 @@ final class GoodTest extends PHPUnit_Framework_TestCase
             'imported' => false,
         ]);
 
-        $this->assertSame(true, $good->isTaxed());
+        $this->assertSame(true, $good->isTaxable());
         $this->assertEquals(20.89, $good->finalValue());
     }
 
@@ -55,7 +55,7 @@ final class GoodTest extends PHPUnit_Framework_TestCase
             'imported' => false,
         ]);
 
-        $this->assertSame(false, $good->isTaxed());
+        $this->assertSame(false, $good->isTaxable());
         $this->assertEquals(9.75, $good->finalValue());
     }
 
