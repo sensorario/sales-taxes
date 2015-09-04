@@ -18,7 +18,7 @@ final class Good
         return new self($attributes);
     }
 
-    public function partsPercent($percent)
+    public function valueInPercentage($percent)
     {
         $money = Money::fromCent(
             $this->attributes['price'] * 100
@@ -47,13 +47,13 @@ final class Good
 
     public function importDuty()
     {
-        return $this->partsPercent(5);
+        return $this->valueInPercentage(5);
     }
 
     public function salesTaxes()
     {
         return $this->isTaxable()
-            ? $this->partsPercent(10)
+            ? $this->valueInPercentage(10)
             : 0
         ;
     }
