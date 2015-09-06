@@ -8,11 +8,6 @@ class Basket
 {
     private $goods = [];
 
-    public function isEmpty()
-    {
-        return true;
-    }
-
     public function count()
     {
         return count($this->goods);

@@ -11,14 +11,6 @@ final class BasketTest extends PHPUnit_Framework_TestCase
         $this->basket = new Basket();
     }
 
-    public function testIsEmpty()
-    {
-        $this->assertSame(
-            true,
-            $this->basket->isEmpty()
-        );
-    }
-
     public function testCountZeroElementAftercreation()
     {
 
