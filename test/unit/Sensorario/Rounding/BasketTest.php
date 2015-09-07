@@ -11,31 +11,6 @@ final class BasketTest extends PHPUnit_Framework_TestCase
         $this->basket = new Basket();
     }
 
-    public function testCountZeroElementAftercreation()
-    {
-
-        $this->assertEquals(
-            0,
-            $this->basket->count()
-        );
-    }
-
-    public function testCountIncrementsAfterOneGoodIsAddedToCollection()
-    {
-        $good = Good::withAttributes([
-            'type'     => 'music cd',
-            'price'    => 18.99,
-            'imported' => false,
-        ]);
-
-        $this->basket->add($good);
-
-        $this->assertEquals(
-            1,
-            $this->basket->count()
-        );
-    }
-
     public function testknowIfAGoodIsInsideTheCollection()
     {
         $cd = Good::withAttributes([

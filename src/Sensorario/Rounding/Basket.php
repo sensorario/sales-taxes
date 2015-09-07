@@ -8,11 +8,6 @@ class Basket
 {
     private $goods = [];
 
-    public function count()
-    {
-        return count($this->goods);
-    }
-
     public function add(Good $good)
     {
         $this->goods[] = $good;
