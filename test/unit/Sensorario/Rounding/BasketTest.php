@@ -4,11 +4,11 @@ namespace Sensorario\Rounding;
 
 use PHPUnit_Framework_TestCase;
 
-final class BasketTest extends PHPUnit_Framework_TestCase
+final class CartTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $this->basket = new Basket();
+        $this->basket = new Cart();
     }
 
     public function testCanBeFilledWithNewGoods()
