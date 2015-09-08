@@ -11,7 +11,7 @@ final class BasketTest extends PHPUnit_Framework_TestCase
         $this->basket = new Basket();
     }
 
-    public function testknowIfAGoodIsInsideTheCollection()
+    public function testCanBeFilledWithNewGoods()
     {
         $cd = Good::withAttributes([
             'type'     => 'music cd',
@@ -19,14 +19,11 @@ final class BasketTest extends PHPUnit_Framework_TestCase
             'imported' => false,
         ]);
 
-        $pills = Good::withAttributes([
-            'type'     => 'pills',
-        ]);
+        $this->assertFalse($this->basket->contains($cd));
 
         $this->basket->add($cd);
 
-        $this->assertTrue($this->basket->has($cd));
-        $this->assertFalse($this->basket->has($pills));
+        $this->assertTrue($this->basket->contains($cd));
     }
 
     public function testKnowsTotalTaxesOfGood()

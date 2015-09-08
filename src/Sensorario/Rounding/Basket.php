@@ -13,7 +13,7 @@ class Basket
         $this->goods[] = $good;
     }
 
-    public function has(Good $good)
+    public function contains(Good $good)
     {
         return in_array(
             $good,
