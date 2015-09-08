@@ -8,7 +8,7 @@ final class CartTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $this->basket = new Cart();
+        $this->cart = new Cart();
     }
 
     public function testCanBeFilledWithNewGoods()
@@ -19,28 +19,28 @@ final class CartTest extends PHPUnit_Framework_TestCase
             'imported' => false,
         ]);
 
-        $this->assertFalse($this->basket->contains($cd));
+        $this->assertFalse($this->cart->contains($cd));
 
-        $this->basket->add($cd);
+        $this->cart->add($cd);
 
-        $this->assertTrue($this->basket->contains($cd));
+        $this->assertTrue($this->cart->contains($cd));
     }
 
     public function testKnowsTotalTaxesOfGood()
     {
-        $this->basket->add(Good::withAttributes([
+        $this->cart->add(Good::withAttributes([
             'type'     => 'book',
             'price'    => 12.49,
             'imported' => false,
         ]));
 
-        $this->basket->add(Good::withAttributes([
+        $this->cart->add(Good::withAttributes([
             'type'     => 'music cd',
             'price'    => 14.99,
             'imported' => false,
         ]));
 
-        $this->basket->add(Good::withAttributes([
+        $this->cart->add(Good::withAttributes([
             'type'     => 'food',
             'price'    => 0.85,
             'imported' => false,
@@ -48,24 +48,24 @@ final class CartTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             1.50,
-            $this->basket->salesTaxes()
+            $this->cart->salesTaxes()
         );
 
         $this->assertEquals(
             29.83,
-            $this->basket->totalAmount()
+            $this->cart->totalAmount()
         );
     }
 
     public function testKnowsTotalTaxesOfGoodTwo()
     {
-        $this->basket->add(Good::withAttributes([
+        $this->cart->add(Good::withAttributes([
             'type'     => 'food',
             'price'    => 10.00,
             'imported' => true,
         ]));
 
-        $this->basket->add(Good::withAttributes([
+        $this->cart->add(Good::withAttributes([
             'type'     => 'perfume',
             'price'    => 47.50,
             'imported' => true,
@@ -73,36 +73,36 @@ final class CartTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             7.65,
-            $this->basket->salesTaxes()
+            $this->cart->salesTaxes()
         );
 
         $this->assertEquals(
             65.15,
-            $this->basket->totalAmount()
+            $this->cart->totalAmount()
         );
     }
 
     public function testKnowsTotalTaxesOfGoodThree()
     {
-        $this->basket->add(Good::withAttributes([
+        $this->cart->add(Good::withAttributes([
             'type'     => 'perfume',
             'price'    => 27.99,
             'imported' => true,
         ]));
 
-        $this->basket->add(Good::withAttributes([
+        $this->cart->add(Good::withAttributes([
             'type'     => 'perfume',
             'price'    => 18.99,
             'imported' => false,
         ]));
 
-        $this->basket->add(Good::withAttributes([
+        $this->cart->add(Good::withAttributes([
             'type'     => 'medicals',
             'price'    => 9.75,
             'imported' => false,
         ]));
 
-        $this->basket->add(Good::withAttributes([
+        $this->cart->add(Good::withAttributes([
             'type'     => 'food',
             'price'    => 11.25,
             'imported' => true,
@@ -110,12 +110,12 @@ final class CartTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             6.70,
-            $this->basket->salesTaxes()
+            $this->cart->salesTaxes()
         );
 
         $this->assertEquals(
             74.68,
-            $this->basket->totalAmount()
+            $this->cart->totalAmount()
         );
     }
 }
