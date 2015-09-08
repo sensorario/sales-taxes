@@ -3,8 +3,6 @@
 namespace Sensorario\Rounding;
 
 use PHPUnit_Framework_TestCase;
-use Sensorario\Rounding\Percentable;
-use Sensorario\Rounding\Number;
 
 final class MoneyTest extends PHPUnit_Framework_TestCase
 {
