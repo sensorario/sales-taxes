@@ -7,7 +7,7 @@ use Sensorario\Rounding\Good;
 
 final class GoodTest extends PHPUnit_Framework_TestCase
 {
-    public function testAGoodIsNotTaxesExempt()
+    public function testAGoodIsNotTaxesExemptByDefault()
     {
         $good = Good::withAttributes([
             'type'     => 'fake type',
@@ -37,7 +37,7 @@ final class GoodTest extends PHPUnit_Framework_TestCase
         ];
     }
 
-    public function testImportedNotTaxed()
+    public function testImportDutyWhenIsImportedAndTaxesExempt()
     {
         $good = Good::withAttributes([
             'type'     => 'food',
@@ -45,12 +45,21 @@ final class GoodTest extends PHPUnit_Framework_TestCase
             'imported' => true,
         ]);
 
-        $this->assertEquals(0.6, $good->monetaryValueInPercentage(5));
         $this->assertEquals(0.6, $good->importDuty());
+    }
+
+    public function tesFinalValueWhenIsImportedAndTaxesExempt()
+    {
+        $good = Good::withAttributes([
+            'type'     => 'food',
+            'price'    => 11.25,
+            'imported' => true,
+        ]);
+
         $this->assertEquals(11.85, $good->finalValue());
     }
 
-    public function testImportedTaxed()
+    public function testSalesTaxesWhenImportedAndNotExemptFromTaxes()
     {
         $good = Good::withAttributes([
             'type'     => 'perfume',
@@ -58,11 +67,10 @@ final class GoodTest extends PHPUnit_Framework_TestCase
             'imported' => true,
         ]);
 
-        $this->assertEquals(32.19, $good->finalValue());
         $this->assertEquals(2.8, $good->salesTaxes());
     }
 
-    public function testNotImportedTaxed()
+    public function testFinalValueWhenNotImportedAndNotExemptFromTaxes()
     {
         $good = Good::withAttributes([
             'type'     => 'music cd',
@@ -73,7 +81,7 @@ final class GoodTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(20.89, $good->finalValue());
     }
 
-    public function testNotImportedNotTaxed()
+    public function testFinalValueWhenNotImportedAndExemptFromTaxes()
     {
         $good = Good::withAttributes([
             'type'     => 'medicals',
@@ -82,19 +90,5 @@ final class GoodTest extends PHPUnit_Framework_TestCase
         ]);
 
         $this->assertEquals(9.75, $good->finalValue());
-    }
-
-    public function testPropertyGetter()
-    {
-        $good = Good::withAttributes([
-            'type'     => 'food',
-            'price'    => 11.25,
-            'imported' => true,
-        ]);
-
-        $this->assertEquals(
-            11.25,
-            $good->getPropery('price')
-        );
     }
 }
