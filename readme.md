@@ -1,3 +1,7 @@
+# badges
+
+<img src="https://travis-ci.org/sensorario/sales-taxes.svg?branch=master">
+
 # Sales Taxes Problem
 
 This problem requires some kind of input. You are free to implement
