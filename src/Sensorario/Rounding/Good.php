@@ -18,7 +18,7 @@ final class Good
         return $this->attributes[$propertyName];
     }
 
-    public function withAttributes(array $attributes)
+    public static function withAttributes(array $attributes)
     {
         return new self($attributes);
     }
