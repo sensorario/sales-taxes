@@ -43,7 +43,7 @@ final class Good
     {
         return $this->getPropery('price')
             + $this->importDuty()
-            + $this->salesTaxes()
+            + $this->basicSalesTax()
         ;
     }
 
@@ -55,7 +55,7 @@ final class Good
         ;
     }
 
-    public function salesTaxes()
+    public function basicSalesTax()
     {
         return $this->isTaxesExempt()
             ? 0

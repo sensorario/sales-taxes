@@ -67,7 +67,7 @@ final class GoodTest extends PHPUnit_Framework_TestCase
             'imported' => true,
         ]);
 
-        $this->assertEquals(2.8, $good->salesTaxes());
+        $this->assertEquals(2.8, $good->basicSalesTax());
     }
 
     public function testFinalValueWhenNotImportedAndNotExemptFromTaxes()

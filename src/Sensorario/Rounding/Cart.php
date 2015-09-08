@@ -27,7 +27,7 @@ class Cart
 
         foreach ($this->goods as $good) {
             $amount = $amount
-                + $good->salesTaxes()
+                + $good->basicSalesTax()
                 + $good->importDuty()
             ;
         }
