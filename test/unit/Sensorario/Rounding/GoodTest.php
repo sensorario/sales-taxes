@@ -7,7 +7,7 @@ use Sensorario\Rounding\Good;
 
 final class GoodTest extends PHPUnit_Framework_TestCase
 {
-    public function testIsTaxableByDefault()
+    public function testAGoodIsNotTaxesExempt()
     {
         $good = Good::withAttributes([
             'type'     => 'fake type',
